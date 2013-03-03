@@ -32,13 +32,39 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
+case platform
+when "redhat", "centos", "scientific", "fedora", "suse", "amazon", "oracle"
+  default['mwf']['dedicated']['owner']    = "apache"
+  default['mwf']['dedicated']['group']   = "apache"
+  default['mwf']['alias']['owner']    = "apache"
+  default['mwf']['alias']['group']   = "apache"
+when "debian", "ubuntu"
+  default['mwf']['dedicated']['owner']    = "www-data"
+  default['mwf']['dedicated']['group']   = "www-data"
+  default['mwf']['alias']['owner']    = "www-data"
+  default['mwf']['alias']['group']   = "www-data"
+when "arch"
+  default['mwf']['dedicated']['owner']    = "http"
+  default['mwf']['dedicated']['group']   = "http"
+  default['mwf']['alias']['owner']    = "http"
+  default['mwf']['alias']['group']   = "http"
+when "freebsd"
+  default['mwf']['dedicated']['owner']    = "www"
+  default['mwf']['dedicated']['group']    = "www"
+  default['mwf']['alias']['owner']    = "www"
+  default['mwf']['alias']['group']    = "www"
+else
+  default['mwf']['dedicated']['owner']    = "www-data"
+  default['mwf']['dedicated']['group']   = "www-data"
+  default['mwf']['alias']['owner']    = "www-data"
+  default['mwf']['alias']['group']   = "www-data"
+end
+
 default['mwf']['dedicated']['enable'] = false
 default['mwf']['dedicated']['directory'] = '/var/www/mwf_dedicated'
 default['mwf']['dedicated']['hostname'] = '*'
 default['mwf']['dedicated']['repository'] = 'https://github.com/ucla/mwf.git'
 default['mwf']['dedicated']['reference'] = 'master'
-default['mwf']['dedicated']['owner'] = node['apache']['user']
-default['mwf']['dedicated']['group'] = node['apache']['group']
 default['mwf']['dedicated']['mode'] = '0755'
 
 default['mwf']['dedicated']['hosts'] = {
@@ -53,8 +79,6 @@ default['mwf']['alias']['directory'] = '/var/www/mwf'
 default['mwf']['alias']['path'] = 'mwf'
 default['mwf']['alias']['repository'] = 'https://github.com/ucla/mwf.git'
 default['mwf']['alias']['reference'] = 'master'
-default['mwf']['alias']['owner'] = 'apache'
-default['mwf']['alias']['group'] = 'apache'
 default['mwf']['alias']['mode'] = '0755'
 
 default['mwf']['alias']['instances'] = {

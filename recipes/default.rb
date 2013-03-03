@@ -99,6 +99,7 @@ node['mwf']['alias']['instances'].each do |name, instance|
   www_path = "/#{www_path}" unless www_path[0] == '/'
   
   if enabled
+    include_recipe "apache2::mod_alias"
     directory Pathname.new(directory).dirname.to_s do
       owner "root"
       group "root"

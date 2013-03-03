@@ -4,7 +4,7 @@ maintainer_email  "ebollens@ucla.edu"
 license           "BSD 3-clause License"
 description       "Installs and configures MWF instances as virtual hosts and aliases"
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           "1.0.1"
+version           "1.0.2"
 recipe            "mwf", "Manage MWF instances based on attribute configuration"
 
 %w{redhat centos scientific fedora debian ubuntu arch freebsd amazon}.each do |os|
