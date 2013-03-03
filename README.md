@@ -11,17 +11,19 @@ may be found at https://github.com/ucla/mwf
 This cookbook requires the following cookbooks:
 
 * apache2
+* git
 * php
 
 This cookbook includes the `apache2`, `apache2::mod_php5`, `php`, 
-`php::module_curl` and `php::module_gd` recipes.
+`php::module_curl` and `php::module_gd` recipes and leverages the `git` 
+deploy resource.
 
 ## Usage
 
 The `default` recipe is used to deploy vhost and alias configurations of MWF 
-instances. This recipe includes installing dependencies, syncing an MWF
-repository, setting up the Apache alias or vhost, defining the document root 
-and configuring the MWF `var` directory.
+instances. This recipe installs dependencies, syncs MWF Git repository, sets up 
+the Apache alias or vhost, defining the document root and configures the MWF 
+`var` directory.
 
 See "Attributes" for more details about configuration and "Definitions" for 
 an explanation of the `mwf\_instance` used by this recipe.
